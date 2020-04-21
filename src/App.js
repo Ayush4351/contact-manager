@@ -6,16 +6,20 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   return (
     <div className="App">
-      <Header/>
+      <Header
+        branding = "Vormiir Contact Manager"
+      />
       <Contact 
         name ="Ayush"
         email = "ayush4351@gmail.com"
         phone = "9999999999"
+        address = "Lakhimpur Kheri"
       />
       <Contact 
         name = "Shivam"
         email = "ayush4351@outlook.com"
         phone = "9999999999"
+        address = "LPU"
       />
 
     </div>

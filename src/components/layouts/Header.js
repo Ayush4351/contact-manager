@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Header(props) {
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
-      <a href="/" className="navbar-brand">
+      <Link to="/" className="navbar-brand">
         <img
           src="https://getbootstrap.com/docs/4.4/assets/brand/bootstrap-solid.svg"
           height="30"
@@ -11,7 +12,7 @@ function Header(props) {
           alt="branding_logo"
         />{" "}
         {props.branding}
-      </a>
+      </Link>
       <button
         className="navbar-toggler"
         type="button"
@@ -24,16 +25,21 @@ function Header(props) {
         <span className="navbar-toggler-icon"></span>
       </button>
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul className="navbar-nav mr-auto">
+        <ul className="navbar-nav ml-auto">
           <li className="nav-item">
-            <a href="/" className="nav-link">
-              Home
-            </a>
+            <Link to="/" className="nav-link">
+              <i className="fas fa-home"></i> Home
+            </Link>
           </li>
           <li className="nav-item">
-            <a href="/" className="nav-link">
-              Contact
-            </a>
+            <Link to="/contact/add" className="nav-link">
+              <i className="fas fa-plus"></i> Add Contact
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/about" className="nav-link">
+              <i className="fas fa-question"></i>About
+            </Link>
           </li>
         </ul>
       </div>

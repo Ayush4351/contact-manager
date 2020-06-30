@@ -21,7 +21,6 @@ class Contacts extends Component {
                     name={contact.name}
                     email={contact.email}
                     phone={contact.phone}
-                    address={contact.address}
                   />
                 ))}
               </div>

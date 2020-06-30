@@ -1,34 +1,55 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 class Test extends Component {
+  state = {
+    title: "",
+    body: "",
+  };
 
-    componentDidMount() {
-        console.log('ComponentDidMount')
-    }
+  componentDidMount() {
+    fetch("https://jsonplaceholder.typicode.com/posts/1")
+      .then((response) => response.json())
+      .then((data) => this.setState({
+          title: data.title,
+          body: data.body
+      }));
+  }
 
-    componentWillMount() {
-        console.log('ComponentWillMount');
-    }
+  // componentWillMount() {
+  //     console.log('ComponentWillMount');
+  // }
 
-    componentDidUpdate() {
-        console.log('ComponentDidUpdate');
-    }
+  // componentDidUpdate() {
+  //     console.log('ComponentDidUpdate');
+  // }
 
-    componentWillUpdate() {
-        console.log('ComponentWillUpdate');
-    }
+  // componentWillUpdate() {
+  //     console.log('ComponentWillUpdate');
+  // }
 
-    componentWillReceiveProps() {
+  // componentWillReceiveProps(nextProps, nextState) {
+  //     console.log('ComponentWillRecieveProps');
+  // }
 
-    }
+  // static getDerivedStateFromProps(nextProps, prevState) {
+  //     return {
+  //         test: 'something'
+  //     };
+  // }
 
-    render() {
-        return (
-            <div>
-                <h1>Test Component</h1>    
-            </div>
-        )
-    }
+  // getSnapshotBeforeUpdate(prevProps, prevState) {
+  //     console.log9('getSnapshotbeforeUpdate');
+  // }
+
+  render() {
+      const {title, body} = this.state
+    return (
+      <div>
+        <h1>{title}</h1>
+        <p>{body}</p>
+      </div>
+    );
+  }
 }
 
 export default Test;

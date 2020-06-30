@@ -1,20 +1,23 @@
 import React, { Component } from "react";
 import "../../App.css";
 import { context } from "../../context";
+import axios from "axios";
 
 class Contact extends Component {
   state = {
     showContactInfo: true,
   };
 
-  onClickDelete = (id, dispatch) => {
-    //console.log(id, dispatch);
+  onClickDelete = async (id, dispatch) => {
+    await axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`);
+
     dispatch({ type: "DELETE_CONTACT", payload: id });
+    //console.log(id, dispatch);
   };
 
   render() {
     //we can destructure the prop if we don't want to use this.props everytime
-    const { id, address } = this.props;
+    const { id } = this.props;
     const { showContactInfo } = this.state;
     return (
       <context.Consumer>
@@ -62,9 +65,6 @@ class Contact extends Component {
                       <li className="list-group-item">
                         Phone number:
                         <span className="details">{this.props.phone}</span>
-                      </li>
-                      <li className="list-group-item">
-                        Address: <span className="details">{address}</span>
                       </li>
                     </ul>
                   </div>

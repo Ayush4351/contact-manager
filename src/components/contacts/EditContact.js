@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { context } from "../../context";
-// import { v4 as uuidv4 } from "uuid";
 import InputGroup from "../layouts/InputGroup";
 import axios from "axios";
 
-class AddContacts extends Component {
+class EditContact extends Component {
   state = {
     name: "",
     email: "",
@@ -16,7 +15,7 @@ class AddContacts extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  onSubmit = async (dispatch, e) => {
+  onSubmit = (dispatch, e) => {
     e.preventDefault();
 
     const { name, email, phone } = this.state;
@@ -49,19 +48,6 @@ class AddContacts extends Component {
       return;
     }
 
-    const newContact = {
-      name,
-      email,
-      phone,
-    };
-
-    const res = await axios.post(
-      "https://jsonplaceholder.typicode.com/users",
-      newContact
-    );
-
-    dispatch({ type: "ADD_CONTACT", payload: res.data });
-
     //Clear state
     this.setState({
       name: "",
@@ -74,7 +60,7 @@ class AddContacts extends Component {
   };
 
   render() {
-    const { name, email, phone, errors } = this.state;
+    const { name, email, phone, address, errors } = this.state;
 
     return (
       <context.Consumer>
@@ -136,4 +122,4 @@ class AddContacts extends Component {
   }
 }
 
-export default AddContacts;
+export default EditContact;

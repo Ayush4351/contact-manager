@@ -2,9 +2,8 @@
 import React, { Component } from "react";
 
 class AddContact extends Component {
-
   constructor(props) {
-    super(props)
+    super(props);
 
     this.nameInput = React.createRef();
     this.emailInput = React.createRef();
@@ -18,8 +17,8 @@ class AddContact extends Component {
       name: this.nameInput.current.value,
       email: this.emailInput.current.value,
       phone: this.phoneInput.current.value,
-      addressInput: this.addressInput.current.value
-    }
+      addressInput: this.addressInput.current.value,
+    };
     console.log(contact);
   };
 
@@ -27,8 +26,8 @@ class AddContact extends Component {
     name: "",
     email: "",
     phone: "",
-    address: ""
-  }
+    address: "",
+  };
 
   render() {
     const { name, email, phone, address } = this.props;

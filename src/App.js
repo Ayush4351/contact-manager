@@ -1,6 +1,7 @@
 import React from "react";
 import Contacts from "./components/contacts/Contacts";
 import AddContacts from "./components/contacts/AddContacts";
+import EditContact from "./components/contacts/EditContact";
 import Header from "./components/layouts/Header";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Provider from "./context";
@@ -12,13 +13,14 @@ import Test from "./components/test/Test";
 function App() {
   return (
     <Provider>
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <div className="App">
           <Header branding="Vormiir Contact Manager" />
           <div className="container">
             <Switch>
               <Route exact path="/" component={Contacts}></Route>
               <Route exact path="/contact/add" component={AddContacts}></Route>
+              <Route exact path="/contact/edit/:id" component={EditContact}></Route>
               <Route exact path="/about" component={About}></Route>
               <Route exact path="/test" component={Test}></Route>
               <Route component={NotFound}></Route>

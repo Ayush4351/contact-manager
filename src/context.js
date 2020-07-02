@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { act } from "@testing-library/react";
 
 export const context = React.createContext();
 
@@ -17,6 +18,11 @@ const reducer = (state, action) => {
         ...state,
         Contacts: [action.payload, ...state.Contacts],
       };
+    case "UPDATE_CONTACT":
+      return {
+        ...state,
+        Contacts: state.Contacts.map(contact => contact.id === action.payload.id ? (contact = action.payload): contact)
+      }
     default:
       return state;
   }

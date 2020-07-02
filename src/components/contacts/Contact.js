@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "../../App.css";
 import { context } from "../../context";
 import axios from "axios";
@@ -29,7 +30,7 @@ class Contact extends Component {
                 <div className="card-header">
                   <div className="row">
                     <div
-                      className="col-md-6 col-lg-6"
+                      className="col-md-10 col-lg-10"
                       onClick={() => {
                         this.setState({
                           showContactInfo: !this.state.showContactInfo,
@@ -46,12 +47,28 @@ class Contact extends Component {
                         {this.props.name} <i className="fas fa-sort-down"></i>
                       </h4>
                     </div>
-                    <div className="col-md-6 col-lg-6 text-right">
-                      <i
-                        className="fas fa-trash"
-                        style={{ color: "red", cursor: "pointer" }}
-                        onClick={this.onClickDelete.bind(this, id, dispatch)}
-                      ></i>
+                    <div className="col-md-2 col-lg-2">
+                      <div className="row">
+                        <div className="col-md-6 col-lg-6 text-right">
+                          <Link to={`contact/edit/${id}`}>
+                            <i
+                              className="fas fa-pen"
+                              style={{ color: "blue", cursor: "pointer" }}
+                            ></i>
+                          </Link>
+                        </div>
+                        <div className="col-md-6 col-lg-6 text-left">
+                          <i
+                            className="fas fa-trash"
+                            style={{ color: "red", cursor: "pointer" }}
+                            onClick={this.onClickDelete.bind(
+                              this,
+                              id,
+                              dispatch
+                            )}
+                          ></i>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
